@@ -22,7 +22,7 @@ namespace sean.azurewebsites.net.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "<h1>Sean Luce</h1>";
+            ViewData["Message"] = "Sean Luce";
 
             return View();
         }
