@@ -4,30 +4,11 @@
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
 
-<%@ Page Language="C#" %>
-<script runat="server">
+@using (Html.BeginForm("UploadTestFile", "INSERT_YOUR_CONTROLLER_NAME_HERE", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+    <span>
+        <input type="file" name="myFile" multiple /> <br>
+        <input type="submit" value="Upload" />
+    </span>
 
-    void SubmitButton_Click(Object sender, EventArgs e) {
-       if (File1.PostedFile != null) {
-          try {
-             File1.PostedFile.SaveAs("C:\\Uploads\\uploadedfile.txt");
-             Span1.InnerHtml = "Upload Successful!";
-          }
-          catch (Exception ex) {
-             Span1.InnerHtml = "Error saving file <b>C:\\" +
-                File1.Value + "</b><br>" + ex.ToString();
-          }
-       }
-    } 
-
-
-    <form runat="server" enctype="multipart/form-data">
-        Select a file to upload:<br />
-        <input type="file" id="File1" runat="Server">
-        <p>
-        <input type="submit" id="Submit1" runat="Server" 
-         value="Upload File" OnServerClick="SubmitButton_Click">
-        <p>
-        <span id="Span1" runat="Server" />
-    </form>
+}
 
