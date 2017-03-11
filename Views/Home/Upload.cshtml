@@ -4,7 +4,21 @@
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+<%@ Page Language="C#" %>
+<script runat="server">
+
+    void SubmitButton_Click(Object sender, EventArgs e) {
+       if (File1.PostedFile != null) {
+          try {
+             File1.PostedFile.SaveAs("C:\\Uploads\\uploadedfile.txt");
+             Span1.InnerHtml = "Upload Successful!";
+          }
+          catch (Exception ex) {
+             Span1.InnerHtml = "Error saving file <b>C:\\" +
+                File1.Value + "</b><br>" + ex.ToString();
+          }
+       }
+    } 
 
 
     <form runat="server" enctype="multipart/form-data">
